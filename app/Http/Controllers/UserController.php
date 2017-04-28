@@ -18,7 +18,7 @@ class UserController extends Controller
         if(Auth::check())
         {
             $users = User::get();
-            return view('/admin', compact('users'));
+            return view('admin', compact('users'));
         }
         else
         {
