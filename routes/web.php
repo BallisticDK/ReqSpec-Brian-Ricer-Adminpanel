@@ -38,6 +38,8 @@ Route::group(['prefix' => 'Cars', 'namespace' => 'Cars'], function () {
     Route::group(['prefix' => '/{car}'], function () {
         Route::get('/', 'CarController@show')->name('cars.car.show');
         Route::get('/export', 'CarController@export')->name('cars.car.export');
+        Route::get('/edit', 'CarController@edit')->name('cars.car.edit');
+        Route::post('/update', 'CarController@update')->name('cars.car.update');
     });
 });
 
