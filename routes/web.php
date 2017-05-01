@@ -26,12 +26,14 @@ Route::post('/store', 'UserController@store')->name('storeUser');
 
 // Cars
 
-Route::get('/', 'Cars\CarController@index')->name('cars.all');
+Route::get('/', 'AdminController@showAdminPage')->name('admin.main');
 
 // Cars
 Route::group(['prefix' => 'Cars', 'namespace' => 'Cars'], function () {
     Route::get('/', 'CarController@index')->name('cars.all');
     Route::get('/export', 'CarController@export')->name('cars.export');
+    Route::get('/insert', 'CarController@create')->name('cars.insert');
+    Route::post('/store', 'CarController@store')->name('cars.store');
     // Car
     Route::group(['prefix' => '/{car}'], function () {
         Route::get('/', 'CarController@show')->name('cars.car.show');
@@ -39,14 +41,22 @@ Route::group(['prefix' => 'Cars', 'namespace' => 'Cars'], function () {
     });
 });
 
+
+
+
 // Car Models
 Route::group(['prefix' => 'Models', 'namespace' => 'Cars'], function () {
     Route::get('/', 'CarModelController@index')->name('carmodels.all');
     Route::get('/export', 'CarModelController@export')->name('carmodels.export');
+    Route::get('/insert', 'CarModelController@create')->name('carmodels.insert');
+    Route::post('/store', 'CarModelController@store')->name('carmodels.store');
     // Car Model
     Route::group(['prefix' => '/{carModel}'], function () {
         Route::get('/', 'CarModelController@show')->name('carmodels.carmodel.show');
         Route::get('/export', 'CarModelController@export')->name('carmodels.carmodel.export');
+        Route::get('/edit', 'CarModelController@edit')->name('carmodels.carmodel.edit');
+        Route::post('/update', 'CarModelController@update')->name('carmodels.carmodel.update');
+        Route::delete ('/delete', 'CarModelController@destroy')->name('carmodels.carmodel.delete');
     }); 
 });
 

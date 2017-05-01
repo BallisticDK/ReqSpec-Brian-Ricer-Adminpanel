@@ -10,7 +10,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<li><a href="">Insert car</a></li>
+					<li><a href="{{ route('cars.insert') }}">Insert car</a></li>
 					<li><a href="{{ route('cars.all') }}">View all cars</a></li>
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<li><a href="">Insert Model</a></li>
+					<li><a href="{{ route('carmodels.insert') }}">Insert Model</a></li>
 					<li><a href="{{ route('carmodels.all') }}">View all Models</a></li>
 				</div>
 			</div>
