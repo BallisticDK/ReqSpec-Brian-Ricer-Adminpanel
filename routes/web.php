@@ -10,26 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin','AdminController@showAdminPage')->name('index');
-
-Route::delete ('/admin/{id}', 'UserController@destroy')->name('deleteUser');
-
-Route::get('/edit/{id}', 'UserController@edit')->name('editUser');
-
-Route::post('/update/{id}', 'UserController@update')->name('updateUser');
-
-Route::get('/create', 'UserController@create')->name('createUser');
-
-Route::post('/store', 'UserController@store')->name('storeUser');
 
 
 
-// Cars
 
+// Main page
 Route::get('/', 'AdminController@showAdminPage')->name('admin.main');
 
 // Cars
 Route::group(['prefix' => 'Cars', 'namespace' => 'Cars'], function () {
+    Route::post('/getmodels', 'CarController@getmodels')->name('retrive.models');
     Route::get('/', 'CarController@index')->name('cars.all');
     Route::get('/export', 'CarController@export')->name('cars.export');
     Route::get('/insert', 'CarController@create')->name('cars.insert');
@@ -40,11 +30,9 @@ Route::group(['prefix' => 'Cars', 'namespace' => 'Cars'], function () {
         Route::get('/export', 'CarController@export')->name('cars.car.export');
         Route::get('/edit', 'CarController@edit')->name('cars.car.edit');
         Route::post('/update', 'CarController@update')->name('cars.car.update');
+        Route::delete ('/delete', 'CarController@destroy')->name('cars.car.delete');
     });
 });
-
-
-
 
 // Car Models
 Route::group(['prefix' => 'Models', 'namespace' => 'Cars'], function () {
@@ -66,14 +54,17 @@ Route::group(['prefix' => 'Models', 'namespace' => 'Cars'], function () {
 Route::group(['prefix' => 'Manufacturers', 'namespace' => 'Cars'], function () {
     Route::get('/', 'ManufacturerController@index')->name('manufacturers.all');
     Route::get('/export', 'ManufacturerController@export')->name('manufacturers.export');
+    Route::get('/insert', 'ManufacturerController@create')->name('manufacturers.insert');
+    Route::post('/store', 'ManufacturerController@store')->name('manufacturers.store');
     // Manufacturer
     Route::group(['prefix' => '/{manufacturer}'], function () {
         Route::get('/', 'ManufacturerController@show')->name('manufacturers.manufacturer.show');
         Route::get('/export', 'ManufacturerController@export')->name('manufacturers.manufacturer.export');
+        Route::get('/edit', 'ManufacturerController@edit')->name('manufacturers.manufacturer.edit');
+        Route::post('/update', 'ManufacturerController@update')->name('manufacturers.manufacturer.update');
+        Route::delete ('/delete', 'ManufacturerController@destroy')->name('manufacturers.manufacturer.delete');
     }); 
 });
 
-
-
-
+// This needs to be here for some reason
 Auth::routes();

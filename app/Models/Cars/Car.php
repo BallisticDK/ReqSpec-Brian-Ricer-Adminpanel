@@ -15,4 +15,16 @@ class Car extends Model
    	{
    		return $this->belongsTo(Manufacturer::class);
    	}
+
+   	public function doesPictureExist($picturePath)
+ 	{
+    	if(file_exists( public_path() . '/' . $picturePath)) 
+    	{
+        	return true;
+    	}
+    	else
+    	{
+    	    return false; 
+   	  	}     
+ 	}
 }

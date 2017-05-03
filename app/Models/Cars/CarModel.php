@@ -11,7 +11,7 @@ class CarModel extends Model
     	return $this->belongsTo(Manufacturer::class);
     }
 
-    public function car()
+    public function cars()
     {
     	return $this->hasMany(Car::class);
     }

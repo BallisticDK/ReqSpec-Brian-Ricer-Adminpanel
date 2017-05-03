@@ -6,19 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Manufacturer extends Model
 {
-	public function carModels($request)
+	public function carModels()
 	{
-		if($request == "list") 
-		{
-			return $this->hasMany(CarModel::class);
-		}
-		else if ($request == "count") 
-		{
-			return $this->hasMany(CarModel::class)->count();
-		}
-		else 
-		{
-			return null;
-		}
+		return $this->hasMany(CarModel::class);
 	}
+	public function cars()
+   	{
+   		return $this->hasMany(Car::class);
+   	}
 }

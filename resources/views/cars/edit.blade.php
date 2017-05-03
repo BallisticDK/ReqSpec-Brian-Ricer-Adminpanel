@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-	<form method="POST" action="{{ route('cars.car.update', ['id' => $car->id])}} " enctype="multipart/form-data">
+	<form method="POST" action="{{ route('cars.car.update', ['id' => $car->id])}}" enctype="multipart/form-data">
 	<select name="manufacturer">
 		@foreach($manufacturers as $manufacturer)
 			<option value="{{$manufacturer->id}}"

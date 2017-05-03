@@ -28,9 +28,9 @@ class CarModelController extends Controller
      */
     public function show(CarModel $carModel)
     {
-        $manufacturer   = $carModel->manufacturer;
-        $cars           = $carModel->cars;
-        $carsCount      = sizeof($cars);
+        $manufacturer = $carModel->manufacturer;
+        $cars = $carModel->cars;
+        $carsCount = sizeof($cars);
         return view('carmodels.show', compact('carModel', 'manufacturer', 'cars', 'carsCount'));
     }
 
@@ -58,7 +58,7 @@ class CarModelController extends Controller
         $carModel->name = $request->Input('name');
         $carModel->manufacturer_id = $request->Input('manufacturer');
         $carModel->save();
-        return redirect(route('admin.main'));
+        return redirect(route('carmodels.all'));
     }
 
 
@@ -84,7 +84,7 @@ class CarModelController extends Controller
         $carModel->manufacturer_id = $request->Input('manufacturer');
         $carModel->save();
 
-        return redirect(route('admin.main'));
+        return redirect(route('carmodels.all'));
     }
 
 

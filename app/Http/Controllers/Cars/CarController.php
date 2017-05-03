@@ -17,7 +17,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::get();
+        $cars = Car::simplePaginate(30);
         return view('cars.home', compact('cars'));
     }
 
@@ -65,7 +65,7 @@ class CarController extends Controller
         $car->car_picture_path = "uploads/" . $file->getClientOriginalName();
 
         $car->save();
-        return redirect(route('admin.main'));
+        return redirect(route('cars.all'));
     }
 
 
@@ -86,19 +86,35 @@ class CarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $carModel = CarModel::find($id);
-
-        $carModel->name = $request->Input('name');
-        $carModel->manufacturer_id = $request->Input('manufacturer');
-        $carModel->save();
-
-        return redirect(route('admin.main'));
+        $car = Car::find($id);
+        $car->manufacturer_id = $request->Input('manufacturer');
+        $car->car_model_id = $request->Input('carmodel');
+        $car->horsepower = $request->Input('horsepower');
+        $car->ugliness = $request->Input('ugliness');
+        if($request->file('carpicture') != null)
+        {
+            $file = $request->file('carpicture');
+            $file->move('uploads', $file->getClientOriginalName());
+            $car->car_picture_path = "uploads/" . $file->getClientOriginalName();
+        }
+        $car->save();
+        return redirect(route('cars.all'));
     }
 
 
     public function destroy($id)
     {
-        CarModel::find($id)->delete();
+        Car::find($id)->delete();
         return back();
     }
+
+
+
+    public function getmodels()
+    {
+        $id = $_POST['id'];
+        $carModels = CarModel::where('manufacturer_id', $id)->get();
+        return json_encode($carModels);
+    }
+
 }

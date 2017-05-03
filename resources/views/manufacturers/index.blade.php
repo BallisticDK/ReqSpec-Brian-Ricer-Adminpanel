@@ -13,9 +13,17 @@
 				<tr>
 					<td><a href="{{ route('manufacturers.manufacturer.show', $manufacturer) }}">{{ $manufacturer->id }}</a></td>
 					<td><a href="{{ route('manufacturers.manufacturer.show', $manufacturer) }}">{{ $manufacturer->name }}</td>
-					<td><a href="{{ route('carmodels.carmodel.show', $manufacturer->carModel) }}">{{ $manufacturer->carModels("count") }}</td>
+					<td><a href="{{ route('manufacturers.manufacturer.show', $manufacturer) }}">{{ sizeof($manufacturer->carModels) }}</td>
 					<td>{{ Carbon\Carbon::parse($manufacturer->updated_at)->format('d-m-Y') }}</td>
 					<td>{{ Carbon\Carbon::parse($manufacturer->created_at)->format('d-m-Y') }}</td>
+					<td><a href="{{route('manufacturers.manufacturer.edit', ['id' => $manufacturer->id])}}">Edit</a></td>
+					<td>
+						<form method="POST" action="{{ route('manufacturers.manufacturer.delete', ['id' => $manufacturer->id]) }}">
+							{{ csrf_field() }}
+							<input type="hidden" name="_method" value="DELETE">
+							<a href="#" onclick="$(this).closest('form').submit();">Delete</a>
+						</form>
+					</td>
 				</tr>
 			@endforeach
 		</tbody>

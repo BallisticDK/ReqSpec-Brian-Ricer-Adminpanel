@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<div class="panel-body">
-					<li><a href="">Insert Manufacturer</a></li>
+					<li><a href="{{ route('manufacturers.insert') }}">Insert Manufacturer</a></li>
 					<li><a href="{{ route('manufacturers.all') }}">View all Manufacturers</a></li>
 				</div>
 			</div>

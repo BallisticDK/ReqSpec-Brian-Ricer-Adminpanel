@@ -5,7 +5,25 @@ body {
 	background-color:#FFF;
 }
 
+
+
+
 .grayasdgf
 {
 	background-color: gray;
+}
+
+.table tbody>tr>td.vert-align
+{
+    vertical-align: middle;
+}
+
+.marginbottom
+{
+	margin-bottom: 20px;
+}
+
+.fillerdiv
+{
+	height:100px;
 }
