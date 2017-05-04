@@ -2,9 +2,14 @@
 @section('content')
 
 	<form method="POST" action="{{ route('manufacturers.manufacturer.update', ['id' => $manufacturer->id]) }}">
-	<input type="text" name="name" value="{{ $manufacturer->name }}">
+	<div class="form-group">
+		<label for="manufacturername" class="control-label">Manufacturer name</label>
+		<input type="text" name="name" class="form-control" value="{{ $manufacturer->name }}">
+	</div>
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	<input type="submit" value="submit">
+	<div class="form-group"> 
+		<input type="submit" class="btn btn-primary" value="Submit">
+	</div>
 	</form>
 
 

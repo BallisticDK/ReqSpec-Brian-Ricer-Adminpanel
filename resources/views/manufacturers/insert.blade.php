@@ -2,9 +2,14 @@
 @section('content')
 
 	<form method="POST" action="{{ route('manufacturers.store') }}">
-	<input type="text" name="name">
+	<div class="form-group">
+		<label for="manufacturername" class="control-label">Manufacturer name</label>
+		<input type="text" class="form-control"  name="name">
+	</div>
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
-	<input type="submit" value="submit">
+	<div class="form-group"> 
+		<input type="submit" class="btn btn-primary" value="Submit">
+	</div>
 	</form>
 
 
