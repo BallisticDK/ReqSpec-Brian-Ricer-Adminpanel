@@ -17,8 +17,8 @@
 			@foreach ($cars as $car)
 				<tr>
 					<td class="vert-align">
-						@if($car->doesPictureExist($car->car_picture_path))
-							<a href="{{ route('cars.car.show', $car) }}"><img src="{{ $car->car_picture_path }}" height="100"></a>
+						@if($car->doesPictureExist("../../brianrice/public/uploads/$car->car_picture_path"))
+							<a href="{{ route('cars.car.show', $car) }}"><img src="/images/{{ $car->car_picture_path }}" height="100"></a>
 						@else
 							<div class="fillerdiv"></div>
 						@endif

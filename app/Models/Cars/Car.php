@@ -18,7 +18,7 @@ class Car extends Model
 
    	public function doesPictureExist($picturePath)
  	{
-    	if(file_exists( public_path() . '/' . $picturePath)) 
+    	if(file_exists($picturePath)) 
     	{
         	return true;
     	}

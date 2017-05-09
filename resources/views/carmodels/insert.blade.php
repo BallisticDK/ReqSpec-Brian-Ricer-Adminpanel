@@ -4,7 +4,7 @@
 	<form method="POST" action="{{ route('carmodels.store') }}">
 		<div class="form-group">
 			<label for="modelname" class="control-label">Model name</label>
-			<input type="text" class="form-control" name="name">
+			<input required="required" type="text" class="form-control" name="name">
 		</div>
 		<div class="form-group">
 			<label for="manufacturer" class="control-label">Manufacturer</label>

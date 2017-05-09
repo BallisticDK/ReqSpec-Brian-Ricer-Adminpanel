@@ -4,7 +4,7 @@
 	<form method="POST" action="{{ route('carmodels.carmodel.update', ['id' => $carModel->id]) }}">
 		<div class="form-group">
 			<label for="modelname" class="control-label">Model name</label>
-			<input type="text" name="name" class="form-control" value="{{ $carModel->name }}">
+			<input required="required" type="text" name="name" class="form-control" value="{{ $carModel->name }}">
 		</div>
 		<div class="form-group">
 			<label for="manufacturer" class="control-label">Manufacturer</label>

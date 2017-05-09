@@ -4,7 +4,7 @@
 	<form method="POST" action="{{ route('manufacturers.store') }}">
 	<div class="form-group">
 		<label for="manufacturername" class="control-label">Manufacturer name</label>
-		<input type="text" class="form-control"  name="name">
+		<input required="required" type="text" class="form-control"  name="name">
 	</div>
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 	<div class="form-group"> 

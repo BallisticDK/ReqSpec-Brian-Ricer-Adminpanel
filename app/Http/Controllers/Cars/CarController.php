@@ -55,14 +55,13 @@ class CarController extends Controller
         $car = new Car();
 
         $file = $request->file('carpicture');
-        //mkdir('uploads');
-
-        $file->move('uploads', $file->getClientOriginalName());
+        //mkdir('../../public/uploads/');
+        $file->move('../../brianrice/public/uploads', $file->getClientOriginalName());
         $car->manufacturer_id = $request->Input('manufacturer');
         $car->car_model_id = $request->Input('carmodel');
         $car->horsepower = $request->Input('horsepower');
         $car->ugliness = $request->Input('ugliness');
-        $car->car_picture_path = "uploads/" . $file->getClientOriginalName();
+        $car->car_picture_path = $file->getClientOriginalName();
 
         $car->save();
         return redirect(route('cars.all'));
@@ -94,8 +93,8 @@ class CarController extends Controller
         if($request->file('carpicture') != null)
         {
             $file = $request->file('carpicture');
-            $file->move('uploads', $file->getClientOriginalName());
-            $car->car_picture_path = "uploads/" . $file->getClientOriginalName();
+            $file->move('../../brianrice/public/uploads', $file->getClientOriginalName());
+            $car->car_picture_path = $file->getClientOriginalName();
         }
         $car->save();
         return redirect(route('cars.all'));
@@ -104,11 +103,11 @@ class CarController extends Controller
 
     public function destroy($id)
     {
-        Car::find($id)->delete();
+        $car = Car::find($id);
+        unlink("../../brianrice/public/uploads/$car->car_picture_path");
+        $car->Delete();
         return back();
     }
-
-
 
     public function getmodels()
     {
